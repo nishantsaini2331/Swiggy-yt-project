@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 
-function TopRestaurant({ data = [] }) {
+function TopRestaurant({ data = [] , title }) {
     // console.log(data);
     const [value, setValue] = useState(0);
     // const [data, setData] = useState([]);
@@ -32,7 +32,7 @@ function TopRestaurant({ data = [] }) {
         <div className="mt-14 w-full">
             <div className="flex justify-between mt-5">
                 <h1 className="font-bold text-2xl">
-                    Top restaurant chains in Delhi
+                    {title}
                 </h1>
                 <div className="flex gap-3">
                     <div
@@ -74,7 +74,7 @@ function TopRestaurant({ data = [] }) {
             >
                 {data.map(({ info, cta : {link}}) => (
                     <div className="hover:scale-95 duration-300" key={info.id}>
-                        <RestaurantCard {...info}  link={link} />
+                        <RestaurantCard  {...info}  link={link} />
                     </div>
                 ))}
             </div>
