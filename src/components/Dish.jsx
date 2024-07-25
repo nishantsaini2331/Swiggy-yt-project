@@ -14,7 +14,7 @@ function Dish({
     },
 }) {
     let { imageId = "", name, price, isVeg = 0, id : itemId } = info;
-    // console.log(resInfo)
+    console.log(resInfo)
     let {
         id,
         name: resName,
