@@ -180,6 +180,7 @@ function Head() {
             <div className="relative w-full ">
                 <div className="w-full sticky bg-white z-20 top-0 shadow-md h-24 flex justify-center items-center">
                     <div className="w-full sm:w-[90%] lg:w-[80%]  flex justify-between">
+
                         <div className="flex items-center">
                             <Link to={"/"}>
                                 <div className="w-20">
@@ -265,15 +266,38 @@ function Head() {
                         </div>
 
                         <div className=" flex items-center md:hidden gap-10 mr-4">
-                            {navItems.map((data) =>
+                            {navItems.map((data , i) =>
                                 data.name == "Sign in" ? (
                                     <div onClick={handleLogin} key={data.path}>
-                                        <i
-                                            className={
-                                                "mt-1 fi text-xl text-gray-700 " +
-                                                data.image
-                                            }
-                                        ></i>
+                                        <div
+                                            className="flex items-center gap-3"
+                                            key={i}
+                                        >
+                                            {userData ? (
+                                                <div className="w-10 h-10 rounded-full ">
+                                                    <img
+                                                        src={userData.photo}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <i
+                                                    className={
+                                                        "mt-1 fi text-xl text-gray-700 " +
+                                                        data.image
+                                                    }
+                                                ></i>
+                                            )}
+                                            <p className="text-lg font-medium text-gray-700 line-clamp-1">
+                                                {userData
+                                                    ? userData.name
+                                                    : data.name}
+                                            </p>
+
+                                            {data.name === "Cart" && (
+                                                <p>{cartData.length}</p>
+                                            )}
+                                        </div>
                                     </div>
                                 ) : (
                                     <Link to={data.path} key={data.path}>
