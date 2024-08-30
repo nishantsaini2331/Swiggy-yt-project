@@ -35,9 +35,12 @@ function RestaurantMenu() {
     // console.log(menuData);
 
     async function fetchMenu() {
+        // console.log(mainId.split("rest")[1]);
         let data = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${mainId}&catalog_qa=undefined&submitAction=ENTER`
+            `${import.meta.env.VITE_BASE_URL}/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${mainId.split("rest")[1]}&catalog_qa=undefined&submitAction=ENTER`
         );
+
+        // https://cors-by-codethread-for-swiggy.vercel.app/cors/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.9690247&lng=72.8205292&restaurantId=233329&catalog_qa=undefined&submitAction=ENTER
         let res = await data.json();
         // console.log(res);
 
@@ -56,7 +59,7 @@ function RestaurantMenu() {
 
         let actualMenu = res?.data?.cards.find((data) => data?.groupedCard);
 
-        // console.log(actualMenu);
+        console.log(res);
 
         setTopPicksData(
             (actualMenu?.groupedCard?.cardGroupMap?.REGULAR?.cards).filter(
