@@ -59,7 +59,7 @@ function RestaurantMenu() {
 
         let actualMenu = res?.data?.cards.find((data) => data?.groupedCard);
 
-        console.log(res);
+        // console.log(res);
 
         setTopPicksData(
             (actualMenu?.groupedCard?.cardGroupMap?.REGULAR?.cards).filter(
