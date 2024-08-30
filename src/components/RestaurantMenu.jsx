@@ -23,14 +23,26 @@ function RestaurantMenu() {
     const [discountData, setDiscountData] = useState([]);
     const [topPicksData, setTopPicksData] = useState(null);
     const [value, setValue] = useState(0);
+   
+
+
     const [currIndex, setCurrIndex] = useState(false);
     const {
         coord: { lat, lng },
     } = useContext(Coordinates);
 
-    function handleNext() {}
-
-    function handlePrev() {}
+    function handlePrev() {
+        if (value < 60) {
+          setValue((prev) => prev + 15);
+        }
+      
+      }
+      function handleNext() {
+        if (value > 0) {
+          setValue((prev) => prev - 15)
+        }
+        
+      }
 
     // console.log(menuData);
 
@@ -175,7 +187,7 @@ function RestaurantMenu() {
                                 <div
                                     onClick={handlePrev}
                                     className={
-                                        ` cursor-pointer rounded-full w-9 h-9 flex justify-center items-center ` +
+                                        `  rounded-[50%]   cursor-pointer  w-[35px] items-center justify-center flex ` +
                                         (value <= 0
                                             ? "bg-gray-100"
                                             : "bg-gray-200")
@@ -193,7 +205,7 @@ function RestaurantMenu() {
                                 <div
                                     onClick={handleNext}
                                     className={
-                                        ` cursor-pointer rounded-full w-9 h-9 flex justify-center items-center ` +
+                                        `cursor-pointer rounded-[50%] w-[35px] items-center justify-center flex   ` +
                                         (value >= 124
                                             ? "bg-gray-100"
                                             : "bg-gray-200")
